@@ -1,0 +1,24 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.461.0",
+    "@aws-sdk/client-secrets-manager": "^3.461.0",
+    "@google-cloud/storage": "^7.6.0",
+    "axios": "^1.6.2",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.9.7",
+    "nodemailer-mailgun-transport": "^2.1.5",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "uuid": "^9.0.1"
+  }
+}
