@@ -1,0 +1,39 @@
+In Tree defining a Node it has members Node left and Node right, datatype of members
+itself is a Node I was Surprised which I should Imagine as a Blue print and to make
+conenction rott.left and root.right
+
+
+Depth First Search  three types :
+
+1. Inorder Traversal : Left Root Right // consider it as direction if no choice than put value
+
+4, 2, 8, 5, 1, 6, 3, 9, 7, 10
+
+2. PreOrder Traversal : root left right // consider it as direction if no choice than put value
+
+1, 2, 4, 5, 8, 3, 6, 7, 9, 10
+
+3. Post Order Traversal : left right root // consider it as direction if no choice than put value
+
+4, 8, 5, 2, 6, 9, 10, 73, 1
+
+
+PreOrder can be implemeted using stack without recusrsion just write right before left
+while (!stack.isEmpty()) {
+            Nod node = stack.pop();
+            System.out.print(node.data+ " ");
+            if (node.right != null) {  // right before left
+                stack.push(node.right);
+            }
+            if (node.left != null) {  
+                stack.push(node.left);
+            }
+
+
+
+
+
+
+
+
+
