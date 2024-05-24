@@ -1,0 +1,109 @@
+Time Complexity in Recursion : Number of function call along with any iteration done in function call
+
+Space Complexity in Recursion: maximum number of recursion which will wait in stack space
+
+
+1. **Recursion problem value increment**
+
+1. i++ post increment values get pass then it increment
+function(i++) for ex if 1 is 1 it passes to function after that it values get incremtn by 2
+
+2. ++i preincrement first value get incremetn than it is added 
+function(++i) for ex if 1  values is incremented by 2 than passes in function
+
+3. i+1 // it always has access to next value and current i
+
+In recursion problem i will find importnace of each of them 
+
+
+2. **when to use return statement** 
+
+
+
+
+
+
+3. **Subsequence problem**
+
+Can be done using PowerSet or Recursion here we are discussing Recursion Concept
+
+A contigious or non contigious sequence which follows the order
+
+for [3,1,2]
+3
+1
+2
+3,1
+1,2
+3,2
+3,1,2
+{}  // null
+
+3,2,1 is not subsequence
+
+null is also a subsequence
+
+Subsequence.java Problem
+
+correct :  list.remove(list.size()-1);
+Incorrect : list.remove(i)
+
+Why it is incorrect because , I cannot trust index i of list it is deceiving because in this problem  index i always
+gets increment in function call but list doesnt grow as per as index due to remove
+statement, after remove statement we can see index increments 
+
+list.remove(list.size()-1);
+function(arr, i + 1, list); // index i increment
+
+list doesnt grow with index, Our task is to remove element which is
+added it may be added from i index of array but in list it can be at 0 or any other pos
+ition 
+
+ list.add(arr[i]);   // arr[i] elemet is added to list
+
+
+so Always remove last element from list because it will be the elemetn which is added
+list.size()-1 reperesnt last index in list therefore remove it.
+
+correct :  list.remove(list.size()-1);
+
+
+Combination I and Combination II are the two techniquest to deal with array problem
+
+
+Subset I we use combination I technique 
+
+There are no duplicate list created in each Recursion
+we can get each subset list at end of iteration in base condition
+
+
+for (int i=index; i<s.length(); i++) {
+    if (checkPalindrome(index, i, s)) {
+
+     list.add(s.substring(index, i+1));
+        
+     // list.add(sb.toString());
+     palindrome(s, list, finalList, i+1);
+     list.remove(list.size()-1);  
+
+    }
+
+
+    .add is for adding value  and than calling palindrome function which makes 
+    execution vertically (top to down) in the recursion tree and .remove works on backtracking (down to up)
+    and make the list as it was during first plaindrome function call. 
+
+    for()--------> Horizontally
+    
+    
+    palindrome()            
+    |                          /|\
+    |  vertically               |  backtracking (.remove)   
+    |  .add()                   |
+   \|/                         
+    palindrome()
+
+
+
+
+

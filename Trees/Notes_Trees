@@ -1,0 +1,81 @@
+Post Order Travesal.java
+
+1. if we have two class we can always refer one class inside other class and than create
+an object out of it
+
+Node root; used in class PostOrderTraversal
+
+------------------------------------------------------
+
+Vertical Order Traversal
+ 
+PART-A 
+
+correct representation rules :
+
+1. Generric type should match
+2. new keyword always create object of class which implements interface not interface
+
+therefore here new ArrayList/LinkedList is correct
+new List is incorrect
+
+List<List<Integer>> list = new ArrayList<List<Integer>>(); // this one is flexible
+
+// Outer is ArrayList and inner List<Integer> here it be created using arrylist, linkedlist, and stack
+// List<List<Integer>> list = new ArrayList<List<Integer>>();
+
+// Using ArrayList as an inner list
+// list.add(new ArrayList<Integer>(Arrays.asList(1, 2, 3)));
+
+// Using LinkedList as another inner list
+// list.add(new LinkedList<Integer>(Arrays.asList(4, 5, 6)));
+
+// Using a Stack (which also implements List) as another inner list
+// list.add(new Stack<Integer>());
+
+
+
+
+1. new is written with ArrayList
+2. Generic List<Integer> matches on both side
+
+
+List<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+
+// this is not flexible as innerlist canbe only arraylist
+
+1. new is written with ArrayList
+2. Generic ArrayList<Integer>  matches on both side
+
+List<List<Integer>> list = new ArrayList<List<Integer>>();
+
+1. new is written with LinkedList
+2. Generic List<Integer>  matches on both side
+
+PART - B
+
+TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>>();
+
+When you create map as new TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>>();
+, you are creating an empty TreeMap where each key is an Integer representing a column,
+ and each value is another TreeMap. However, this outer TreeMap (map) does not 
+ automatically create inner TreeMap and PriorityQueue objects for each column 
+ and row. You need to explicitly initialize and put these into map as you identify
+  new columns and rows during your tree traversal
+
+
+PART-C 
+
+Both are same
+
+// makes it more readable
+TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
+
+TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>>();
+
+
+{-2={2=[4]}, -1={1=[2]}, 0={0=[10], 2=[5, 8]}, 1={1=[3]}, 2={2=[10]}}
+---------------------------------------------------------------------
+
+
+ 
