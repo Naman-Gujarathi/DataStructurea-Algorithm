@@ -22,7 +22,7 @@ class Solution {
             }
         }
 
-        System.out.println("stack " + stack);
+        // System.out.println("stack " + stack);
         String result = "";
         // to make sure that I get result in correct order not reverse order
         while(!stack.isEmpty()) {
