@@ -6,18 +6,15 @@ class Solution {
         List<List<Integer>> resultList= new ArrayList<>();
         int currentSum =0;
         findAllCombinationSum(candidates, target, list, currentSum, index, resultList);
-
-       
-
          return resultList;
          
     }
 
      void findAllCombinationSum(int[] candidates, int target, List<Integer> list, int currentSum,  int index, List<List<Integer>> resultList){
 
-            if(index == candidates.length){ // index equlas candidate length
+            if(index >= candidates.length){ // index equlas candidate length
                 if(currentSum == target ){ // if currentSum == target it mean we got desired combination
-                    System.out.println("list " + list);
+                    // System.out.println("list " + list);
                     resultList.add(new ArrayList<>(list));
                 }
                 return;
