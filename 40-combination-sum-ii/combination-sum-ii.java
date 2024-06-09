@@ -13,6 +13,7 @@ class Solution {
 
         if(target == 0){
             resultList.add(new ArrayList<>(currentList));
+            return;
         }
         // for loop is running to select an element for index postoion if slected move to i+1
         for(int i=index; i<candidates.length; i++){
