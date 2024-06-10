@@ -1,28 +1,32 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
-       boolean visitedArray[] = new boolean[nums.length];
-       List<Integer> currentList = new ArrayList<>();
-       List<List<Integer>> resultList = new ArrayList<>();
-       findAllCombinations(0, nums, visitedArray, currentList, resultList);
-       return resultList;
+      List<Integer> currentList = new ArrayList<>();// currentList
+      List<List<Integer>> resultList = new ArrayList<>(); // resultList
+      int index =0; // index is zero initially
+      for(int num : nums){
+         currentList.add(num);
+      }
+      findCombination(index, currentList, resultList);
+      return resultList;
     }
 
-     void findAllCombinations(int index, int nums[], boolean visitedArray[], List<Integer> currentList, List<List<Integer>> resultList) {
+   void findCombination(int index,  List<Integer> currentList, List<List<Integer>> resultList){
 
-        if(index == nums.length){
+        if(index == currentList.size()){
             resultList.add(new ArrayList<>(currentList));
             return;
         }
 
-        for(int i=0; i<nums.length; i++){
-            if(visitedArray[i] == false){
-                currentList.add(nums[i]);// add element in list
-                visitedArray[i] = true; // marked visited element
-                 findAllCombinations(index + 1, nums, visitedArray, currentList, resultList);
-                currentList.remove(currentList.size()-1);
-                visitedArray[i] = false;
-            }
-            
+        for(int i= index; i<currentList.size(); i++){
+            swap(index, i, currentList);
+            findCombination(index + 1, currentList, resultList);
+            swap(index, i, currentList);
         }
+    }
+
+    void swap(int index, int i, List<Integer> currentList){
+         int temp = currentList.get(index);
+         currentList.set(index, currentList.get(i));
+         currentList.set(i, temp);
     }
 }
