@@ -32,21 +32,22 @@ class MinStack {
 
     }
     public void pop() {
-              if (head == null) {
-            throw new IllegalStateException("Stack is empty");
-        }
+    
         head = head.next;
+        // this case has to take care of after popping head can be either null or not null
+        // case if head is not null
         if (head != null) {
             currentMin = head.min;
-        } else {
+        } 
+        
+        // below case if head is null
+        else {
             currentMin = Integer.MAX_VALUE;
         }
          
     }
     public int top() {
-        //      if (head == null) {
-        //     throw new IllegalStateException("Stack is empty");
-        // }
+      
         return head.value;
         
     }
