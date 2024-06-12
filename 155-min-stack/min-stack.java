@@ -51,9 +51,9 @@ class MinStack {
         
     }
     public int getMin() {
-              if (head == null) {
-            throw new IllegalStateException("Stack is empty");
-        }
+        //       if (head == null) {
+        //     throw new IllegalStateException("Stack is empty");
+        // }
         return head.min;
         
     }
