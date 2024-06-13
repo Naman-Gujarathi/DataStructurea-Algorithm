@@ -1,3 +1,7 @@
+// Learn it 
+//    if(aboveDiagonal[(currCol - currRow) + (n-1)] == true){ to check digonally from one side 
+// if(belowDiagonal[currRow + currCol] == true){ to check diagonally from other side
+
 class Solution {
     public List<List<String>> solveNQueens(int n) {
         // int grid[][] = new int[n][n]; // created a grid of size n into n
