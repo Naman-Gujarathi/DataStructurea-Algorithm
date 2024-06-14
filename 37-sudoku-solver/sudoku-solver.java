@@ -1,3 +1,4 @@
+//    if(board[3*(currRow/3) + i/3][3*(currCol/3) + i %3] == c){ remeber thsi condition to check elemets in smaller grid of 3*3
 class Solution {
     public void solveSudoku(char[][] board) {
        int m = board[0].length;
