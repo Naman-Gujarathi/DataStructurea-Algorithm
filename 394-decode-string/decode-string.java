@@ -12,7 +12,7 @@ class Solution {
                     int repeat =0;
                     int number =0;
                     int base = 1;
-                    while(!stack.isEmpty() && stack.peek() >= '0' && stack.peek() <= '9'){
+                    while(!stack.isEmpty() && Character.isDigit(stack.peek())){
                         number = stack.pop() - '0'; 
                         repeat = repeat + number * base;
                         base = base *10;
