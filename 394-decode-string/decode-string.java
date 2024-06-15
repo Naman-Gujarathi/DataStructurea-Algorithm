@@ -18,9 +18,9 @@ class Solution {
                         base = base *10;
                     }
                     
-                    String newString = "";
+                    StringBuilder newString = new StringBuilder();
                       for (int j = 0; j < repeat; j++) {
-                            newString = newString + sb.toString();
+                            newString = newString.append(sb.toString());
                        }
 
                     
