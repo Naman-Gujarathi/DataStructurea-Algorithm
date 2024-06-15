@@ -32,12 +32,12 @@ class Solution {
                     stack.push(s.charAt(i));//  1 0 
                 }
             }
-            String result = "";
+            StringBuilder result = new StringBuilder();
             while(!stack.isEmpty()){
-                result = stack.pop() + result;
+                result.insert(0, stack.pop());
             }
 
-            return result;
+            return result.toString();
 
     }
    
