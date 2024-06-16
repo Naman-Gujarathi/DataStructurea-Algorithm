@@ -22,14 +22,14 @@ class Solution {
 
         ListNode mid = slow;
         ListNode prev = null;
-        ListNode next = null;
+        ListNode nextNode = null;
         curr = mid;
 
         while(curr != null){
-            next = curr.next;
+            nextNode = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = next;
+            curr = nextNode;
         }
         
         ListNode tail = prev;
