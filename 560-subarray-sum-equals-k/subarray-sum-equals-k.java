@@ -10,13 +10,13 @@ class Solution {
             if(map.containsKey(currentPrefix - k)){
                 resultCount = resultCount + map.get(currentPrefix - k);  
             }
-            map.put(currentPrefix, map.getOrDefault(currentPrefix, 0) + 1);
-            // if(map.containsKey(currentPrefix)){
-            //     map.put(currentPrefix, map.getOrDefault(currentPrefix, 0) + 1);  
-            // }else{
-            //     map.put(currentPrefix, 1);
-            // }
-            //        
+            // map.put(currentPrefix, map.getOrDefault(currentPrefix, 0) + 1);
+            if(map.containsKey(currentPrefix)){
+                map.put(currentPrefix, map.getOrDefault(currentPrefix, 0) + 1);  
+            }else{
+                map.put(currentPrefix, 1);
+            }
+                   
          }
 
          return resultCount;
