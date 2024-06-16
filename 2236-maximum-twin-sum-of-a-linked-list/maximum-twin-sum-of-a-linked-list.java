@@ -10,20 +10,39 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        int maxPairSum = Integer.MIN_VALUE;
-        ArrayList<Integer> list = new ArrayList<>();
-        ListNode currNode = head;
-        int n=0;
-        while(currNode != null){
-            n++;
-            list.add(currNode.val);
-            currNode = currNode.next;
+        int twinPairSum = Integer.MIN_VALUE;
+        ListNode curr = head;
+     
+        ListNode fast = curr;
+        ListNode slow = curr;
+        while( fast !=null){
+            fast = fast.next.next;
+            slow = slow.next;
         }
 
-        for(int i=0; i<=(n/2)-1; i++){
-            maxPairSum = Math.max(maxPairSum, (list.get(i) + list.get(n-1-i)));
-            
+        ListNode mid = slow;
+        ListNode prev = null;
+        ListNode next = null;
+        curr = mid;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        return maxPairSum;
+        
+        ListNode tail = prev;
+        ListNode start = head;
+        while(tail != null){
+       
+            twinPairSum = Math.max(twinPairSum, start.val + tail.val);
+           
+            start = start.next;
+            tail = tail.next;
+        }
+
+        return twinPairSum;
+        
     }
 }
