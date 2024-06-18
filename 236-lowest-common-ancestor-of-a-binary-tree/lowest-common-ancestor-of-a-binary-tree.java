@@ -25,18 +25,7 @@ class Solution {
                 break;
             }
        }
-       
-    //    for(int i=0; i<list1.size(); i++){
-            
-    //          System.out.print(list1.get(i).val);
-    //    }
-    //      System.out.println("" );
-    //     for(int i=0; i<list2.size(); i++){
-
-    //          System.out.print(list2.get(i).val);
-    //    }
-      
-      
+         
        return lca_Value;
     }
 
@@ -59,5 +48,5 @@ class Solution {
         return false;
     }
 }
-// TC: O(3N)
-// SC: O(4N)
+// TC: O(3N) O(2N) for recursion call for both target p and target q as well for loop between list1 and list 2
+// SC: O(4N) for O(2N) call stack and O(2N) for list1 and list2
