@@ -25,16 +25,16 @@ class Solution {
                 break;
             }
        }
-       System.out.println("List 1" );
-       for(int i=0; i<list1.size(); i++){
+       
+    //    for(int i=0; i<list1.size(); i++){
             
-             System.out.print(list1.get(i).val);
-       }
-         System.out.println("List 2" );
-        for(int i=0; i<list2.size(); i++){
+    //          System.out.print(list1.get(i).val);
+    //    }
+    //      System.out.println("" );
+    //     for(int i=0; i<list2.size(); i++){
 
-             System.out.print(list2.get(i).val);
-       }
+    //          System.out.print(list2.get(i).val);
+    //    }
       
       
        return lca_Value;
