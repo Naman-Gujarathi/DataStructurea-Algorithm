@@ -1,5 +1,8 @@
 class Solution {
     public int evalRPN(String[] tokens) {
+        if(tokens.length == 1){
+            return Integer.parseInt(tokens[0]);
+        }
         Stack<Integer> stack = new Stack<>(); // 3 3 *
       
         int result = 0;
@@ -40,6 +43,6 @@ class Solution {
               }
          }
 
-        return stack.pop();
+        return result;
     }
 }
