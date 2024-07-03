@@ -19,10 +19,8 @@ class BSTIterator {
     public BSTIterator(TreeNode root) {
         stack = new Stack<>();
          curr = root;
-         while(curr != null){
-            stack.push(curr);
-            curr = curr.left;
-        }
+         pushAll(curr);
+         
     }
 
     
@@ -32,10 +30,8 @@ class BSTIterator {
         TreeNode poppedValue = stack.pop();
         if(poppedValue.right != null){
             curr = poppedValue.right;
-            while(curr != null){
-                stack.push(curr);
-                curr = curr.left;
-            }
+            pushAll(curr);
+           
         }
         return poppedValue.val;
         
@@ -43,6 +39,13 @@ class BSTIterator {
     
     public boolean hasNext() {
         return !stack.isEmpty();
+    }
+
+    public void pushAll(TreeNode curr){
+        while(curr != null){
+            stack.push(curr);
+            curr = curr.left;
+        }
     }
 }
 
