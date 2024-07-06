@@ -4,6 +4,7 @@ class Solution {
         // 10  11  12  13
         // 20. 21  22. 23
         // 30. 31. 32. 33
+        // Transpose (swap elemnts from right diagoanl) and reverse each row
         int temp =0;
         for(int i=0; i<matrix.length; i++){
             for(int j=i; j<matrix.length; j++){
