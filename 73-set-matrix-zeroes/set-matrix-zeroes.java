@@ -6,10 +6,10 @@ class Pair{
         this.col = col;
     }
 
-    @Override
-    public String toString(){
-        return "(" + row + "," + col + ")";
-    }
+    // @Override
+    // public String toString(){
+    //     return "(" + row + "," + col + ")";
+    // }
 }
 
 class Solution {
@@ -23,7 +23,7 @@ class Solution {
             }
         }
 
-        System.out.println( queue );
+        // System.out.println( queue );
 
         while(!queue.isEmpty()){
             Pair poppedNode = queue.poll();
