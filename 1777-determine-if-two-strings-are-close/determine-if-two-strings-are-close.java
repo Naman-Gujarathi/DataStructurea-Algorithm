@@ -4,28 +4,26 @@ class Solution {
         if(word1.length() != word2.length()){
             return false;
         }
-        HashMap<Character, Integer> word1Info = new HashMap<>();
-        HashMap<Character, Integer> word2Info= new HashMap<>();
+        
+        int freqWord1[] = new int[26];
+        int freqWord2[] = new int[26];
 
         for(int i=0; i<word1.length(); i++){
-            word1Info.put(word1.charAt(i), word1Info.getOrDefault(word1.charAt(i), 0) + 1);
-            word2Info.put(word2.charAt(i), word2Info.getOrDefault(word2.charAt(i), 0) + 1);
+            freqWord1[word1.charAt(i) - 'a']++;
+            freqWord2[word2.charAt(i) - 'a']++;
         }
 
-        for(Character ch : word1Info.keySet()) {
-            if(!word2Info.containsKey(ch)){
+        for(int i=0; i<26; i++){
+            if((freqWord1[i] == 0  && freqWord2[i] !=0) || (freqWord1[i] != 0  && freqWord2[i] == 0) ){
                 return false;
             }
         }
 
-        List<Integer> word1List = new ArrayList<>(word1Info.values());
-        List<Integer> word2List = new ArrayList<>(word2Info.values());
+        Arrays.sort(freqWord1);
+        Arrays.sort(freqWord2);
 
-       Collections.sort(word1List);
+        return Arrays.equals(freqWord1, freqWord2);
 
-       Collections.sort( word2List);
-
-        return word1List.equals( word2List);
 
     }
 }
