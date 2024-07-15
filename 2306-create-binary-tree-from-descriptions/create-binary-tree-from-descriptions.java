@@ -18,18 +18,18 @@ class Solution {
 
         HashMap<Integer, TreeNode> map = new HashMap<>();// 15, 17, 20, 80, 19, 50
         HashSet<Integer> childset = new HashSet<>();// 15 17 20, 80, 19
-        HashSet<Integer> parentset = new HashSet<>();// 20 50 80
+        // HashSet<Integer> parentset = new HashSet<>();// 20 50 80
         TreeNode currParentNode = null;
          TreeNode currChildNode = null;
         for(int i=0; i<descriptions.length; i++){
             
             int parent = descriptions[i][0];
             if(map.containsKey(parent)){
-                  parentset.add(parent);
+                //   parentset.add(parent);
                   currParentNode = map.get(parent);
             }else{
                  currParentNode = new TreeNode(parent);
-                 parentset.add(currParentNode.val);
+                //  parentset.add(currParentNode.val);
                  map.put(currParentNode.val, currParentNode);
             }
            
@@ -65,7 +65,7 @@ class Solution {
             // System.out.println("map " +  map);
             
        int head = -1;
-        for( int value : parentset) {
+        for( int value : map.keySet()) {
             if(!childset.contains(value)) {
                 head = value;
             }
