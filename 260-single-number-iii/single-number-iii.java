@@ -15,8 +15,10 @@ class Solution {
         while((bit & result) == 0 ) {
             bit = bit << 1;
         }
-
+        
+    // Divide in two groups
         for(int num : nums){
+
             if((bit & num) != 0){
                 resultArray[0] = resultArray[0] ^ num;
             } else {
