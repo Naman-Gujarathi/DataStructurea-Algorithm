@@ -12,9 +12,9 @@ class Pair{
 class Solution {
     public String longestDiverseString(int a, int b, int c) {
 
-        if( (a > 2 && b ==0 && c ==0) && (b > 2 && c ==0 && a == 0) && (c > 2 && b ==0 && a == 0)){
-            return "";
-        }
+        // if( (a > 2 && b ==0 && c ==0) && (b > 2 && c ==0 && a == 0) && (c > 2 && b ==0 && a == 0)){
+        //     return "";
+        // }
 
         PriorityQueue<Pair> queue = new PriorityQueue<>((a1,b1) -> {
             return b1.value - a1.value;
@@ -33,7 +33,7 @@ class Solution {
         }
        
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while(!queue.isEmpty()){
             if(sb.length() >= 2){
                 Pair poppedObj = queue.poll();
