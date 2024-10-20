@@ -10,7 +10,7 @@ class Solution {
             queue.add(nums[i]);
         }
         double temp = 0;
-        long poppedValue = 0;
+        int  poppedValue = 0;
        for(int i=1; i<=k; i++){
         // System.out.println("queue.poll" + queue.poll());
         poppedValue =  queue.poll();
