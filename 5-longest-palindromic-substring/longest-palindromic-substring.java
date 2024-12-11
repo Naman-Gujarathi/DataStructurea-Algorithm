@@ -1,39 +1,53 @@
-class Triplet {
-    int start;
-    int end;
+class Triplet{
     int max;
-    public Triplet(){
-        this.start = 0;
-        this.end = 0;
-        this.max = 0;
+    int left;
+    int right;
+
+    public Triplet(int max, int left, int right){
+        this.max = max;
+        this.left = left;
+        this.right = right;
     }
 }
 
 class Solution {
     public String longestPalindrome(String s) {
-        StringBuffer sb = new StringBuffer();
-        Triplet obj = new Triplet();
-          for(int i=0; i<s.length(); i++){
-            int left =i;
-            int right =i;
-            checkPalindrome(left, right,  sb, s, obj);
-            checkPalindrome(left, right+1, sb, s, obj);
+        
+        if(s == null || s.length() == 0 || s.length() == 1) return s;
+
+        Triplet triplet = new Triplet(0, 0 , 0);
+
+        for(int i=0; i<s.length()-1; i++){
             
+            findLongestPalindrome(i, i, s, triplet);
+
+            findLongestPalindrome(i, i+1, s, triplet);
         }
-        return s.substring(obj.start, obj.end + 1);
+
+        return s.substring(triplet.left, triplet.right + 1);
     }
 
-    void checkPalindrome(int left, int right,  StringBuffer sb, String s, Triplet obj) {
-       
-             while(left >=0 && right < s.length() && s.charAt(left) == s.charAt(right)){
-                if(obj.max < (right - left + 1)){
-                    obj.max = right - left + 1;
-                    obj.start = left;
-                    obj.end = right;
+    void findLongestPalindrome(int left, int right, String s, Triplet triplet){
+       int max = 0;
+       while( ((left ) >= 0) && ((right) <= (s.length() -1)) && (left <= right)  && (s.charAt(left) == s.charAt(right))){
+            
+                max = right - left + 1;
+                if(max > triplet.max){
+                    triplet.left = left;
+                    triplet.right = right;
+                    triplet.max = max;
                 }
+
                 left--;
-                right++; 
+                right++;
+
+
             }
-         
+       }
+
+
     }
-}
+
+
+
+
