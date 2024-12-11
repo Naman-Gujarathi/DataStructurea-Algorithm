@@ -26,9 +26,9 @@ class Solution {
 
         //   System.out.println("arr" + alphaNumericArr);
 
-          for(int i = 0; i<=right; i++){
-            System.out.print( alphaNumericArr[i]);
-          }
+        //   for(int i = 0; i<=right; i++){
+        //     System.out.print( alphaNumericArr[i]);
+        //   }
 
           while(left <= right){
             if(alphaNumericArr[left] != alphaNumericArr[right]){
