@@ -5,13 +5,12 @@ class Solution {
           if(s.trim().length() == 0) return true; // whitespaces 
 
           for(int i=0; i<s.length(); i++){
-                if(((s.charAt(i) - '0') >= 0 && (s.charAt(i)) - '0' <= 9) || ((s.charAt(i) - '0') >= 17 && (s.charAt(i)) - '0' <= 42) || ((s.charAt(i) - '0') >= 49 && (s.charAt(i)) - '0' <= 74)){
+                // if(((s.charAt(i) - '0') >= 0 && (s.charAt(i)) - '0' <= 9) || ((s.charAt(i) - '0') >= 17 && (s.charAt(i)) - '0' <= 42) || ((s.charAt(i) - '0') >= 49 && (s.charAt(i)) - '0' <= 74)){
 
-                    if(((s.charAt(i) - '0') >= 17 && (s.charAt(i)) - '0' <= 90) || ((s.charAt(i) - '0') >= 42)){
+                    if(Character.isLetterOrDigit(s.charAt(i))){
+
                         sb.append(Character.toLowerCase(s.charAt(i)));
-                    }else{
-                        sb.append(s.charAt(i));
-                    }
+                    
                     
                 }
           } 
