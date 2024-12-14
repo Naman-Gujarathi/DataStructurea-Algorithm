@@ -9,7 +9,7 @@ class Solution {
              int currValue = arr[i+1] - arr[i];
              min = Math.min(min, currValue);
         }
-        System.out.println("set" + set);
+        // System.out.println("set" + set);
 
         List<Integer> list = new ArrayList<>();
         List<List<Integer>> resultList = new ArrayList<>();
