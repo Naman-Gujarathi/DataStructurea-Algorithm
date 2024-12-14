@@ -11,18 +11,19 @@ class Solution {
         }
         // System.out.println("set" + set);
 
-        List<Integer> list = new ArrayList<>();
+        // List<Integer> list = new ArrayList<>();
         List<List<Integer>> resultList = new ArrayList<>();
         
         for(int i=0; i<arr.length; i++){
             
                 if(set.contains(arr[i] + min)){
-                    list.add(arr[i]);
-                    list.add(arr[i] + min);
-                    resultList.add(new ArrayList<>(list));
+                    // list.add(arr[i]);
+                    // list.add(arr[i] + min);
+                    // resultList.add(new ArrayList<>(list));
+                     resultList.add(Arrays.asList(arr[i], arr[i] + min));
                 } 
             
-            list.clear();
+            // list.clear();
         }
 
         return resultList;
