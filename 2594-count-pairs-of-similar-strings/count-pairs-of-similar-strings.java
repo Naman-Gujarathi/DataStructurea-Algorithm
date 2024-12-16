@@ -3,6 +3,9 @@ class Solution {
 
         Set<Character> set = new HashSet<>();
         Map<String, Integer> map = new HashMap<>();
+        List<Character> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder(); 
+
         int totalCountPairs = 0;
 
             for(String word : words){
@@ -11,9 +14,12 @@ class Solution {
                     set.add(c);
                 }
 
-               String sortedNewString = sortedString(set);
-            
-                totalCountPairs += map.getOrDefault(sortedNewString, 0);
+               String sortedNewString = sortedString(set,list, sb);
+
+                if(map.containsKey(sortedNewString)){
+                     totalCountPairs += map.get(sortedNewString);
+                }
+               
 
 
                 map.put(sortedNewString, map.getOrDefault(sortedNewString, 0) + 1);
@@ -26,10 +32,16 @@ class Solution {
 
     
 
-    String sortedString(Set<Character> set){
-        List<Character> list = new ArrayList<>(set);
+    String sortedString(Set<Character> set,  List<Character> list, StringBuilder sb  ){
+       
+        list.clear();
+        sb.setLength(0);
+        for(char ch : set){
+            list.add(ch);
+        }
+
         Collections.sort(list);
-        StringBuilder sb = new StringBuilder(); 
+      
         for(char ch : list){
             sb.append(ch);
         }
