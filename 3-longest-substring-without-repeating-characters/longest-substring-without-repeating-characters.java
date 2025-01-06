@@ -4,7 +4,7 @@ class Solution {
             return s.length();
         }
         int maxLen = 0;
-        HashSet<Character> set = new HashSet<>();
+        Set<Character> set = new HashSet<>();
         for(int i=0; i<s.length(); i++){
             int j = i;
             while((j< s.length()) && (!set.contains(s.charAt(j)))){
