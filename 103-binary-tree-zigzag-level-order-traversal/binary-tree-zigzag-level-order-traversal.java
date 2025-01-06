@@ -15,43 +15,40 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        int level =-1;
-        List<List<Integer>> list = new ArrayList<>();
-        List<Integer> currentList = new ArrayList<>();
         if(root == null){
-            return list;
+            return new ArrayList<>();
         }
-        Queue<TreeNode> queue = new LinkedList();
+        List<List<Integer>> resultList = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+
         queue.add(root);
+       
+        int level = 0;
         while(!queue.isEmpty()){
-            level++;
+            List<Integer> currLevel = new ArrayList<>();
             int size = queue.size();
             for(int i=0; i<size; i++){
-                TreeNode poppedNode = queue.poll();
-                currentList.add(poppedNode.val);
-               
-                if(poppedNode.left != null){
-                        queue.add(poppedNode.left);
-                       
-                    } 
-                if(poppedNode.right != null){
-                        queue.add(poppedNode.right);
-                       
-                    } 
                 
+                TreeNode poppedNode = queue.poll();
+                currLevel.add(poppedNode.val);
+                
+                if(poppedNode.left != null){
+                    queue.add(poppedNode.left);
+                }
+
+                if(poppedNode.right != null){
+                    queue.add(poppedNode.right);
+                }
+
             }
-            // System.out.println("cl" + currentList);
-            if(level %2 != 0){
-                Collections.reverse(currentList);
-                list.add(new ArrayList<>(currentList));
-            }else{
-                list.add(new ArrayList<>(currentList));
+
+            if(level % 2 != 0){
+                Collections.reverse(currLevel);
             }
-           
-            currentList = new ArrayList<>();
-         
+            resultList.add(new ArrayList<>(currLevel));
+            level++;        
         }
 
-        return list;
+        return resultList;
     }
 }
