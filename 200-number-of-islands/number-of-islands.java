@@ -1,38 +1,41 @@
 class Solution {
     public int numIslands(char[][] grid) {
-
-    int m = grid.length;
-    int n = grid[0].length;
-    boolean visitedNode[][] = new boolean[m][n];
-    int countIsland =0;
-    int nRow[] = {0, 1, 0, -1};
-    int nCol[] = {1, 0, -1, 0};
-
-    for(int i=0; i<m; i++){
-        for(int j=0; j<n; j++){
-            if( grid[i][j] == '1' && !visitedNode[i][j]) {
-                 visitedNode[i][j] = true;
-                countIsland++;
-                findNumberIsland(visitedNode, grid, i, j, nRow, nCol, m, n);
-            }
-        }
-    }
-
-    return countIsland;
-
-    }
-
-    void findNumberIsland(boolean visitedNode[][], char[][] grid, int currRow, int currCol, int nRow[], int nCol[], int m, int n ){
-         
-        for(int i=0; i<nRow.length; i++){
-            int adjRow = currRow + nRow[i];
-            int adjCol = currCol + nCol[i];
-
-            if(adjRow >= 0 && adjRow < m && adjCol >= 0 && adjCol < n && visitedNode[adjRow][adjCol] == false && grid[adjRow][adjCol] == '1' ){
-                 visitedNode[adjRow][adjCol] = true;
-                findNumberIsland(visitedNode, grid, adjRow, adjCol, nRow, nCol, m, n);
+        boolean visitedArray[][] = new boolean[grid.length][grid[0].length];
+        int countIslands =0;
+        for(int i=0; i<grid.length; i++){
+            for(int j=0; j<grid[0].length; j++){
+                if(grid[i][j] == '1' && visitedArray[i][j] == false){
+                    countIslands++;
+                    findIsland(i,j, grid, visitedArray);
+                }
+                continue;
             }
         }
 
+        return countIslands;
+
+       
     }
+
+    void findIsland(int row, int col, char[][] grid,  boolean visitedArray[][]){
+        int adjRow[] = {0, 1, 0, -1};
+        int adjCol[] = {-1, 0, 1, 0};
+
+        for(int i=0; i<adjRow.length; i++){
+            int neighbourRow = row + adjRow[i];
+            int neighbourCol = col + adjCol[i];
+
+            if(neighbourRow >= 0 && neighbourCol >= 0 && neighbourRow < grid.length && neighbourCol < grid[0].length && visitedArray[neighbourRow][neighbourCol] == false && grid[neighbourRow][neighbourCol] == '1'){
+                visitedArray[neighbourRow][neighbourCol] = true;
+                findIsland(neighbourRow,neighbourCol, grid, visitedArray);
+            }
+
+            continue;
+            
+        }
+    }
+
+    
+
+
 }
