@@ -3,90 +3,81 @@ class Pair{
     int y;
     public Pair(int x, int y){
         this.x = x;
-        this.y =y;
+        this.y = y;
     }
 }
 
 class Solution {
     public int orangesRotting(int[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
-        boolean visitedGrid[][] = new boolean[m][n];
+        
         Queue<Pair> queue = new LinkedList<>();
-        int timeCount[] ={0};
-        int nRow[] = {-1, 0,1,0};
-        int nCol[] = {0,1,0,-1};
-        int count =0;
+        int m = grid.length-1;
+        int n = grid[0].length-1;
+        int timeCount = 0;
+        int currentRow = 0;
+        int currentCol = 0;
 
-         for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                if(grid[i][j] == 0 || grid[i][j] == 2){
-                    count++;
-                }
-                
-            }
-        }
-
-        if(count == m*n){
-            return 0;
-        }
-
-
-
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
+        for(int i=0; i<=m ; i++){
+            for(int j=0; j<=n; j++){
                 if(grid[i][j] == 2){
-                    visitedGrid[i][j] = true;
-                    queue.add(new Pair(i,j));
+                    queue.add(new Pair(i, j));
                 }
-                
             }
         }
 
-        findTotalTime(timeCount, m,n, grid, visitedGrid, queue, nRow, nCol);
+        System.out.println("initialSize" + queue.size());
 
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
+        timeCount = bfs( currentRow, currentCol, queue, grid, m, n, timeCount); 
+        System.out.println("timeCount" + timeCount);
+
+        for(int i=0; i<=m ; i++){
+            for(int j=0; j<=n; j++){
                 if(grid[i][j] == 1){
                     return -1;
                 }
-                
             }
         }
 
-        
-            
-        
-        return timeCount[0];
+        return timeCount;
     }
 
-    void  findTotalTime(int timeCount[], int m, int n, int[][] grid, boolean visitedGrid[][], Queue<Pair> queue, int nRow[], int nCol[]) {
+    int bfs(int currentRow, int currentCol ,Queue<Pair> queue,int[][] grid, int m, int n, int timeCount){
+
         while(!queue.isEmpty()){
-                int size = queue.size();
-                for(int p=0; p<size; p++){
-                    Pair poppedNode = queue.poll();
-                    int currentRow = poppedNode.x;
-                    int currentCol = poppedNode.y;
+            int size = queue.size();
+            System.out.println("size" + size);
+            for(int i=0; i<size; i++){
+               Pair coordinates = queue.poll();
+               currentRow = coordinates.x;
+               currentCol = coordinates.y;
+               System.out.println("x: " + coordinates.x + " y: " + coordinates.y);
 
-                    for(int i=0; i<nRow.length; i++){
-                        int adjRow = currentRow + nRow[i];
-                        int adjCol = currentCol + nCol[i];
 
-                        if(adjRow>=0 && adjRow < m && adjCol >=0 && adjCol <n && visitedGrid[adjRow][adjCol] == false && grid[adjRow][adjCol] == 1){
-                            visitedGrid[adjRow][adjCol] = true;
-                            grid[adjRow][adjCol] = 2;
-                            queue.add(new Pair(adjRow, adjCol));
-                        }
-                    } 
-                }
-                if(!queue.isEmpty()){
-                    timeCount[0]++;
-                }
-                
+               int adjRow[] = {0, 1, 0, -1};
+               int adjCol[] = {-1, 0, 1, 0};
+
+               for(int j=0; j<adjRow.length; j++){
+                    int neighbourRow = adjRow[j] + currentRow;;
+                    int neighbourCol = adjCol[j] + currentCol;
+                     System.out.println("neighbourRow: " + neighbourRow + " neighbourCol: " + neighbourCol);
+
+                    if(neighbourRow >= 0 && neighbourCol >= 0 && neighbourRow <= m && neighbourCol <= n && grid[neighbourRow][neighbourCol] == 1 ){
+                         grid[neighbourRow][neighbourCol] = 2;
+                         queue.add(new Pair(neighbourRow, neighbourCol));
+ 
+                    }
+
+               }
+
+            }
+            if(queue.size() != 0){
+                 timeCount++;
+            }
+           
         }
+        return timeCount;
     }
-}
 
-// 2 2 2
-// 0 2 2
-// 1 0 2
+
+
+}
