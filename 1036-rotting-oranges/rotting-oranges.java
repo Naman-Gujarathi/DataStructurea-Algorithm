@@ -25,10 +25,10 @@ class Solution {
             }
         }
 
-        System.out.println("initialSize" + queue.size());
+        // System.out.println("initialSize" + queue.size());
 
         timeCount = bfs( currentRow, currentCol, queue, grid, m, n, timeCount); 
-        System.out.println("timeCount" + timeCount);
+        // System.out.println("timeCount" + timeCount);
 
         for(int i=0; i<=m ; i++){
             for(int j=0; j<=n; j++){
@@ -45,12 +45,12 @@ class Solution {
 
         while(!queue.isEmpty()){
             int size = queue.size();
-            System.out.println("size" + size);
+            // System.out.println("size" + size);
             for(int i=0; i<size; i++){
                Pair coordinates = queue.poll();
                currentRow = coordinates.x;
                currentCol = coordinates.y;
-               System.out.println("x: " + coordinates.x + " y: " + coordinates.y);
+            //    System.out.println("x: " + coordinates.x + " y: " + coordinates.y);
 
 
                int adjRow[] = {0, 1, 0, -1};
@@ -59,7 +59,7 @@ class Solution {
                for(int j=0; j<adjRow.length; j++){
                     int neighbourRow = adjRow[j] + currentRow;;
                     int neighbourCol = adjCol[j] + currentCol;
-                     System.out.println("neighbourRow: " + neighbourRow + " neighbourCol: " + neighbourCol);
+                    //  System.out.println("neighbourRow: " + neighbourRow + " neighbourCol: " + neighbourCol);
 
                     if(neighbourRow >= 0 && neighbourCol >= 0 && neighbourRow <= m && neighbourCol <= n && grid[neighbourRow][neighbourCol] == 1 ){
                          grid[neighbourRow][neighbourCol] = 2;
