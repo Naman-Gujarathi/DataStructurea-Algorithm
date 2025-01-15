@@ -8,20 +8,23 @@ class Solution {
         map.put('C', 100);
         map.put('D', 500);
         map.put('M', 1000);
-        int currentSum =0;
-       
 
+        int result = 0;
         for(int i=0; i<s.length()-1; i++){
-            if(map.get(s.charAt(i)) >= map.get(s.charAt(i+1))){
-                currentSum = currentSum + map.get(s.charAt(i));
-            } else {
-                currentSum = currentSum - map.get(s.charAt(i));
+            if( map.get(s.charAt(i)) >=  map.get(s.charAt(i +1))){
+                result += map.get(s.charAt(i));
+            }else{
+                result -= map.get(s.charAt(i));
             }
         }
 
-        currentSum = currentSum + map.get(s.charAt(s.length()-1));
-        return currentSum;
-
+        result = result + map.get(s.charAt(s.length()-1));
+        return result;
 
     }
 }
+
+
+// XMLC
+
+// -100 + 1000 + -50 + 100
