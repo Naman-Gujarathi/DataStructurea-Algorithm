@@ -1,55 +1,40 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        // intervals[i][1] >= intervals[i+1][0];
+        Arrays.sort(intervals, (a, b) -> a[0] -b[0]);
         if(intervals.length == 1){
             return intervals;
         }
-        Arrays.sort(intervals, (a,b) -> Integer.compare(a[0], b[0]));
-        List<List<Integer>> resultList = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
+
         int start = intervals[0][0];
         int end = intervals[0][1];
-        // int end = -1;
-        for(int i=0; i<intervals.length-1; i++){
-           
-            while((i < intervals.length-1) &&  end >= intervals[i+1][0]){
-                end = Math.max(end, intervals[i+1][1]); 
-                 i++;
-                 continue;
-            }
-
-            if((i < intervals.length-1) && end < intervals[i+1][0]) {
-              
+        List<List<Integer>> resultList = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        for(int i=1; i<intervals.length; i++){
+            if(end >= intervals[i][0]){
+                if(intervals[i][1] > end){
+                     end = intervals[i][1];
+                }
+               
+            }else{
                 list.add(start);
                 list.add(end);
-                resultList.add(list);
-                list = new ArrayList<>();
-                start = intervals[i+1][0];
-                end = intervals[i+1][1];
+                resultList.add(new ArrayList<>(list));
+                list.clear();
+                start = intervals[i][0];
+                end = intervals[i][1];
             }
-
-
         }
+        list.add(start);
+        list.add(end);
+        resultList.add(new ArrayList<>(list));
 
-           
-            list.add(start);
-            list.add(end);
-            resultList.add(list);
-         
-
-            
-
-        int result[][] = new int[resultList.size()][2];
-        int row =0;
-          
-           for(List<Integer> currentList: resultList){
-                result[row][0] = currentList.get(0);
-                result[row][1] = currentList.get(1);
-                row++;
-           }
-
-            return result;
-
-        // return resultList.toArray(new int[resultList.size()][]);
+        int resultArray[][] = new int[resultList.size()][2];
+        int idx = 0;
+        for( List<Integer> list1:resultList){
+             resultArray[idx][0] =list1.get(0);
+             resultArray[idx][1] =list1.get(1);
+             idx++;
+        }
+        return resultArray;
     }
 }
